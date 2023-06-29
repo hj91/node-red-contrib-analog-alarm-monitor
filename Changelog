@@ -1,0 +1,29 @@
+## Changelog for `node-red-contrib-analog-alarm-monitor`
+
+### Version 1.0.1 - Unreleased
+#### Fixed
+- Fixed the issue where alarm status would directly transition from HiHi/LoLo to Normal without passing through Hi/Lo state. Now, the node correctly checks for Hi/Lo limits before transitioning to the Normal state.
+
+#### Updated
+- Updated the implementation of deadband settings to account for the corrected transition logic.
+
+### Version 1.0.0 - Initial release
+- Initial release of `node-red-contrib-analog-alarm-monitor`. This node monitors an analog signal and issues alarm states based on set limit values.
+
+## Bug Report
+
+**Title:** Incorrect Alarm Status Transition in `node-red-contrib-analog-alarm-monitor`
+
+**Description:** In version 1.0.0, the `node-red-contrib-analog-alarm-monitor` was transitioning the alarm status directly from HiHi/LoLo state to Normal without considering the Hi/Lo state. This issue was causing the alarm system to lose the intermediate Hi/Lo state information during alarm status transitions. 
+
+**Steps to reproduce:**
+1. Install `node-red-contrib-analog-alarm-monitor` version 1.0.0.
+2. Set HiHi, Hi, Lo, and LoLo limit values.
+3. Send a payload higher than HiHi limit value, triggering the HiHi state.
+4. Reduce the payload to a value below HiHi limit but higher than Hi limit.
+
+**Expected Result:** The alarm status should transition from HiHi to Hi.
+**Actual Result:** The alarm status transitioned directly from HiHi to Normal.
+
+**Solution:** The issue has been addressed in the upcoming version 1.0.1, where the correct transition logic is implemented to consider Hi/Lo limits before transitioning to the Normal state. The implementation of deadband settings has also been updated to account for the corrected transition logic.
+
