@@ -31,7 +31,7 @@ module.exports = function(RED) {
                     node.status({fill: "blue", shape: "ring", text: "Node Enabled"});
                     return;
                 }
-                
+
                 if (!enableCheck) {
                     node.status({fill: "blue", shape: "ring", text: "Node disabled"});
                     return;
@@ -49,16 +49,16 @@ module.exports = function(RED) {
                 // Parse the incoming value
                 var currentValue = parseFloat(msg.payload);
 
-                var alarmStatus;
-                if (currentValue > hihiLimit) {
+                var alarmStatus = previousStatus;
+                if (currentValue >= hihiLimit) {
                     alarmStatus = 'HiHi';
-                } else if (currentValue > hiLimit && currentValue <= hihiLimit - deadband) {
+                } else if (currentValue < hihiLimit - deadband && currentValue >= hiLimit) {
                     alarmStatus = 'Hi';
-                } else if (currentValue < loloLimit) {
-                    alarmStatus = 'LoLo';
-                } else if (currentValue < loLimit && currentValue >= loloLimit + deadband) {
+                } else if (currentValue < loLimit) {
                     alarmStatus = 'Lo';
-                } else {
+                } else if (currentValue <= loloLimit) {
+                    alarmStatus = 'LoLo';
+                } else if (currentValue < hiLimit && currentValue > loLimit) {
                     alarmStatus = 'Normal';
                 }
 
