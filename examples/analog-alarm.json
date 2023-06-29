@@ -1,0 +1,140 @@
+[
+    {
+        "id": "eb97df44403320ac",
+        "type": "tab",
+        "label": "analog",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "70387482f5d44110",
+        "type": "analog-alarm",
+        "z": "eb97df44403320ac",
+        "name": "Shop Floor Voltage",
+        "hiLimit": "242",
+        "hihiLimit": "250",
+        "loLimit": "238",
+        "loloLimit": "230",
+        "deadband": "2",
+        "areaName": "Shop Floor",
+        "alarmDescription": "Shop Floor Voltage",
+        "x": 670,
+        "y": 120,
+        "wires": [
+            [
+                "5317a0edd4041749"
+            ]
+        ],
+        "icon": "font-awesome/fa-bell-o"
+    },
+    {
+        "id": "e586ec4182aae656",
+        "type": "modbus-read",
+        "z": "eb97df44403320ac",
+        "name": "SDM 120 Voltage",
+        "topic": "",
+        "showStatusActivities": true,
+        "logIOActivities": false,
+        "showErrors": true,
+        "showWarnings": true,
+        "unitid": "1",
+        "dataType": "InputRegister",
+        "adr": "0",
+        "quantity": "2",
+        "rate": "5",
+        "rateUnit": "s",
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "server": "b69d19ed.84d768",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "efc8e3998bdc2f21"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "efc8e3998bdc2f21",
+        "type": "energy-meter",
+        "z": "eb97df44403320ac",
+        "name": "",
+        "x": 370,
+        "y": 120,
+        "wires": [
+            [
+                "70387482f5d44110"
+            ]
+        ]
+    },
+    {
+        "id": "5317a0edd4041749",
+        "type": "debug",
+        "z": "eb97df44403320ac",
+        "name": "Output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 930,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "da67d93d5e97977f",
+        "type": "comment",
+        "z": "eb97df44403320ac",
+        "name": "Sample Analog Alarm Handling ",
+        "info": "(c) Bufferstack.IO Analytics Technology LLP",
+        "x": 210,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "83828aee394ba88b",
+        "type": "comment",
+        "z": "eb97df44403320ac",
+        "name": "This node will start operations only if boolean input true with topic - enable is sent to it",
+        "info": "Send this signal from PLC\n\n(c) Bufferstack.IO Analytics Technology LLP, 2023 ",
+        "x": 710,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "b69d19ed.84d768",
+        "type": "modbus-client",
+        "name": "Serial_2400_8_N_1",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": true,
+        "queueLogEnabled": false,
+        "failureLogEnabled": false,
+        "tcpHost": "10.10.100.254",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB0",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": "9600",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "",
+        "unit_id": "1",
+        "commandDelay": "30",
+        "clientTimeout": "2000",
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": "5000",
+        "parallelUnitIdsAllowed": false
+    }
+]
