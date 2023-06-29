@@ -19,7 +19,7 @@ limitations under the License.
 
 <script type="text/javascript">
     RED.nodes.registerType('analog-alarm', {
-        category: 'Bufferstack.IO Analog Alarms',
+        category: 'Bufferstack.IO Analog Alarm Monitoring Node',
         color: '#a6bbcf',
         defaults: {
             name: { value: "" },
@@ -33,7 +33,7 @@ limitations under the License.
         },
         inputs: 1,
         outputs: 1,
-        icon: "alert.png",
+        icon: "font-awesome/fa-bell-o",
         label: function() {
             return this.name || "analog-alarm";
         }
