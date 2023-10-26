@@ -1,6 +1,10 @@
 ## Changelog for `node-red-contrib-analog-alarm-monitor`
 
-### Version 1.0.1 - Unreleased
+### Version 1.0.2 - 26-10-2023
+#### Added
+- Introduced `limitStatus` functionality. This enhancement provides the specific threshold value that was breached when an alarm state is detected, giving users a more comprehensive view of alarm conditions by offering both qualitative (Hi, HiHi, etc.) and quantitative (exact threshold value) data.
+
+### Version 1.0.1 - 29-06-2023
 #### Fixed
 - Fixed the issue where alarm status would directly transition from HiHi/LoLo to Normal without passing through Hi/Lo state. Now, the node correctly checks for Hi/Lo limits before transitioning to the Normal state.
 
