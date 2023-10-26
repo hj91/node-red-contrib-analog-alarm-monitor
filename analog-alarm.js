@@ -50,14 +50,19 @@ module.exports = function(RED) {
                 var currentValue = parseFloat(msg.payload);
 
                 var alarmStatus = previousStatus;
+                var limitStatus = "";
                 if (currentValue >= hihiLimit) {
                     alarmStatus = 'HiHi';
+                    limitStatus = hihiLimit;
                 } else if (currentValue < hihiLimit - deadband && currentValue >= hiLimit) {
                     alarmStatus = 'Hi';
+                    limitStatus = hiLimit;
                 } else if (currentValue < loLimit) {
                     alarmStatus = 'Lo';
+                    limitStatus = loLimit;
                 } else if (currentValue <= loloLimit) {
                     alarmStatus = 'LoLo';
+                    limitStatus = loloLimit;
                 } else if (currentValue < hiLimit && currentValue > loLimit) {
                     alarmStatus = 'Normal';
                 }
@@ -75,6 +80,7 @@ module.exports = function(RED) {
                         area: areaName,
                         description: alarmDescription,
                         value: currentValue,
+                        limitConfig: limitStatus,
                         status: alarmStatus
                     };
 
