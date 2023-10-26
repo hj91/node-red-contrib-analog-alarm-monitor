@@ -40,6 +40,12 @@ By integrating real-time sensor data into the `analog-alarm` node, your Node-RED
 
 7. Additionally, a message with a Boolean `true` and a topic `enable` is required to enable the alarm checks.
 
+## Change Log
+
+### Version 1.0.2 (2023-10-26)
+
+- Introduced `limitStatus` functionality, which provides the specific threshold value that was breached when an alarm state is detected. This enhancement allows users to gain more detailed insights into the specific conditions under which an alarm was triggered, providing both qualitative (Hi, HiHi, etc.) and quantitative (exact threshold value) information. Thank you Denis Nobre for the feature contribution https://github.com/odenisnobre
+
 ## Contributing
 
 Contributions are welcome. Please raise an issue for bugs, features, or suggestions.
@@ -51,3 +57,8 @@ GPL-3.0
 ## Author 
 
 Harshad Joshi @ Bufferstack.IO Analytics Technology LLP, Pune
+
+## Contributors 
+
+1. Harshad Joshi
+2. Denis Nobre
