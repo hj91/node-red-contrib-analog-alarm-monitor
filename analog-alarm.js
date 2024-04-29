@@ -16,7 +16,6 @@
 
  **/
 
-
 module.exports = function(RED) {
     function AnalogAlarmNode(config) {
         RED.nodes.createNode(this, config);
@@ -42,7 +41,7 @@ module.exports = function(RED) {
                 var hihiLimit = parseFloat(config.hihiLimit);
                 var loLimit = parseFloat(config.loLimit);
                 var loloLimit = parseFloat(config.loloLimit);
-                var deadband = parseFloat(config.deadband);
+                var deadband = parseFloat(config.deadband); // Include deadband
                 var areaName = config.areaName;
                 var alarmDescription = config.alarmDescription;
 
@@ -57,13 +56,13 @@ module.exports = function(RED) {
                 } else if (currentValue < hihiLimit - deadband && currentValue >= hiLimit) {
                     alarmStatus = 'Hi';
                     limitStatus = hiLimit;
-                } else if (currentValue < loLimit) {
+                } else if (currentValue < loLimit && currentValue >= loloLimit) {
                     alarmStatus = 'Lo';
                     limitStatus = loLimit;
                 } else if (currentValue <= loloLimit) {
                     alarmStatus = 'LoLo';
                     limitStatus = loloLimit;
-                } else if (currentValue < hiLimit && currentValue > loLimit) {
+                } else {
                     alarmStatus = 'Normal';
                 }
 
