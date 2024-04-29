@@ -1,6 +1,6 @@
 {
     "name": "node-red-contrib-analog-alarm-monitor",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "A Node-RED node for monitoring analog alarms.",
     "main": "analog-alarm.js",
     "scripts": {
